@@ -23,7 +23,7 @@ mod_reviews_ui <- function(id){
           tags$p("Paste Amazon Product Link"),
           shinymaterial::material_text_box(input_id = ns("code"), "", icon = "link"),
           tags$p("Enter number of pages to scrape"),
-          shinymaterial::material_number_box(input_id = ns("pages"), "", min_value = 1, max_value = 50, initial_value = 10),
+          shinymaterial::material_number_box(input_id = ns("pages"), "", min_value = 1, max_value = 10, initial_value = 5),
           actionButton(ns("go"), "Analyse!")
         )
       ),
