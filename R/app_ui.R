@@ -14,7 +14,7 @@ app_ui <- function(request) {
       secondary_theme_color = "#223150",
       background_color = "black",
       font_color = "black",
-      title = "Amazon Reviews AnalyseR",
+      title = "Amazon Reviews Analyser",
       tags$br(),
       mod_reviews_ui("reviews_ui_1")
     )

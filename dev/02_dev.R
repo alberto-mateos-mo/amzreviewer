@@ -24,6 +24,7 @@ usethis::use_package( "ggplot2" )
 usethis::use_package( "shinymaterial" )
 usethis::use_package( "shinyglide" )
 usethis::use_package( "dplyr" )
+usethis::use_package( "ggwordcloud" )
 usethis::use_pipe()
 
 ## Add modules ----

@@ -76,3 +76,9 @@ get_product_code <- function(url){
   code <- chunked_url[pos+1]
   return(code)
 }
+
+#' Global variables
+#' 
+#' @noRd
+
+utils::globalVariables(c("upos", "key", "freq_pct", "keyword", "rake", "freq", "model_sp", "model_en", "."))
