@@ -4,7 +4,6 @@
 #'
 #' @export
 #' @importFrom shiny shinyApp
-#' @importFrom golem with_golem_options
 
 run_app <- function(options = list()) {
   shiny::shinyApp(ui = app_ui,

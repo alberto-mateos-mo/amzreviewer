@@ -6,8 +6,6 @@ Description: Provides a simple app to analyse product reviews from Amazon.
 License: CC BY 4.0
 Imports: 
     config,
-    golem,
-    shiny,
     attempt,
     DT,
     glue,
@@ -19,7 +17,6 @@ Imports:
     udpipe,
     ggplot2,
     magrittr,
-    shinymaterial,
     shinyglide,
     dplyr,
     ggwordcloud,
