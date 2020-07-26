@@ -24,7 +24,8 @@ Imports:
     dplyr,
     ggwordcloud,
     utils,
-    pkgload
+    pkgload,
+    remotes
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.0
