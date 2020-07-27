@@ -10,3 +10,4 @@ $run_dev.*
 ^amazon_reviews\.gif$
 ^app\.R$
 ^rsconnect$
+^desktop_release\.R$
