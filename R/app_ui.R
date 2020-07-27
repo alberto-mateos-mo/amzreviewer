@@ -11,10 +11,10 @@ app_ui <- function(request) {
     # golem_add_external_resources(),
     # List the first level UI elements here 
     shinymaterial::material_page(
-      primary_theme_color = "#ffffff",
-      secondary_theme_color = "#223150",
+      primary_theme_color = "#3a5250",
+      secondary_theme_color = "#3a5250",
       background_color = "black",
-      font_color = "black",
+      font_color = "white",
       title = "Amazon Reviews Analyser",
       tags$br(),
       mod_reviews_ui("reviews_ui_1")
