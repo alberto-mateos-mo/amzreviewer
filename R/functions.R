@@ -55,10 +55,12 @@ get_reviews <- function(id, pages, locale){
 
 udpipe_process <- function(reviews, locale){
   if(locale == "mx"){
+    model_sp <- udpipe::udpipe_load_model(system.file("app/models/spanish-gsd-ud-2.4-190531.udpipe", package = "amzreviewer"))
     x <- udpipe::udpipe_annotate(model_sp, reviews)
     x <- as.data.frame(x, detailed = TRUE)
     return(x)
   }else if(locale == "us"){
+    model_en <- udpipe::udpipe_load_model(system.file("app/models/english-ewt-ud-2.4-190531.udpipe", package = "amzreviewer"))
     x <- udpipe::udpipe_annotate(model_en, reviews)
     x <- as.data.frame(x, detailed = TRUE)
     return(x)

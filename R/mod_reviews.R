@@ -15,6 +15,7 @@ mod_reviews_ui <- function(id){
         width = 3,
         shinymaterial::material_card(
           title = "",
+          color = "#d6826b",
           tags$p("Select Locale"),
           shinymaterial::material_dropdown(input_id = ns("locale"), "", choices = c("Amazon MX" = "mx", "Amazon US" = "us"))
         ),
@@ -23,7 +24,7 @@ mod_reviews_ui <- function(id){
           tags$p("Paste Amazon Product Link"),
           shinymaterial::material_text_box(input_id = ns("code"), "", icon = "link"),
           tags$p("Enter number of pages to scrape"),
-          shinymaterial::material_number_box(input_id = ns("pages"), "", min_value = 1, max_value = 50, initial_value = 10),
+          shinymaterial::material_number_box(input_id = ns("pages"), "", min_value = 1, max_value = 100, initial_value = 10),
           actionButton(ns("go"), "Analyse!")
         )
       ),
@@ -31,8 +32,8 @@ mod_reviews_ui <- function(id){
         width = 9,
         shinymaterial::material_card(
           shinyglide::glide(
-            shinyglide::screen(label = "Adjectives mentioned in reviews:", plotOutput(ns("adjs"))),
-            shinyglide::screen(label = "Keywords found in reviews:", plotOutput(ns("keyw")))
+            shinyglide::screen(label = "Adjectives mentioned in reviews:", shinycssloaders::withSpinner(plotOutput(ns("adjs")), type = 6, color = "#167864")),
+            shinyglide::screen(label = "Keywords found in reviews:", shinycssloaders::withSpinner(plotOutput(ns("keyw")), type = 6, color = "#167864"))
           )
         )
       )
@@ -54,16 +55,15 @@ mod_reviews_server <- function(input, output, session){
   })
   
   output$adjs <- renderPlot({
-    shinymaterial::material_spinner_show(session, "adjs")
     adj_stats <- x() %>%
       dplyr::filter(upos == "ADJ")
     
     adj_stats <- udpipe::txt_freq(adj_stats$lemma)
-    shinymaterial::material_spinner_hide(session, "adjs")
     
     ggplot2::ggplot(adj_stats, ggplot2::aes(label = key, size = freq_pct), colour = "#020200")+
       ggwordcloud::geom_text_wordcloud(shape = "square")+
-      ggplot2::scale_size(range = c(1, 15))
+      ggplot2::scale_size(range = c(1, 15))+
+      ggplot2::theme_minimal()
   })
   
   output$keyw <- renderPlot({
@@ -71,7 +71,8 @@ mod_reviews_server <- function(input, output, session){
     
     ggplot2::ggplot(rake_stats, ggplot2::aes(label = keyword, size = rake*freq))+
       ggwordcloud::geom_text_wordcloud(shape = "square")+
-      ggplot2::scale_size(range = c(1, 15))
+      ggplot2::scale_size(range = c(1, 15))+
+      ggplot2::theme_minimal()
   })
   
 }
